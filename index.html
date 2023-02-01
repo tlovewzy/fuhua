@@ -1,0 +1,61 @@
+﻿
+<!-- saved from url=(0057)http://39.105.214.35:88/Spine-Viewer?model=fuhua_tiandian -->
+<html style="font-size: 15.0711px;"><script type="text/javascript" charset="utf-8" id="zm-extension" src="webrtc-patch.js" async=""></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SpineViewer</title>
+    
+<link href="static/spine-viewer/css/main.css" rel="stylesheet" type="text/css"><script src="static/spine-viewer/js/spine-widget.js"></script></head>
+
+
+<body id="widget">
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var scale = window.devicePixelRatio;
+                var clientWidth = docEl.clientWidth;
+                var clientHeight = docEl.clientHeight;
+                var base = 0;
+                var refer = 0;
+                if (clientWidth > clientHeight) {
+                    refer = 500;
+                    base = clientHeight;
+                }
+                else {
+                    refer = 750;
+                    base = clientWidth;
+                }
+                docEl.style.fontSize = 10 * (base / refer) * scale + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    if (!(!!window.ActiveXObject || "ActiveXObject" in window)) {
+        var modelName = "fuhua_tiandian";
+        var path = "static/spine-viewer/model/" + modelName + "/" + modelName;
+        new spine.SpineWidget("widget",
+            {
+                json: path + ".json",
+                atlas: path + ".atlas.txt",
+                png: path + ".png",
+                skin: "default",
+                scale: 1,
+                animation: ["touch","idle","touch3","idle"],
+                alpha: true,
+                premultipliedAlpha: true
+            });
+    }
+    else
+        alert("不支持IE浏览器");
+    var box = document.getElementById("test");
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        if (box.offsetLeft == 0) {
+            box.style['margin-left'] = -14.1 + "rem"
+
+        } else {
+            box.style['margin-left'] = 0 + "rem"
+        }
+    };
+</script><canvas id="canvasInst" width="1536" height="674" style="width: 100%; height: 100%;"></canvas></body></html>
